@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Bank - Inicio de Sesión</title>
+    <!-- Bootstrap 4 CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- CSS personalizado para tema vintage azul -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Contenedor principal centrado -->
+    <div class="container-fluid d-flex justify-content-center align-items-center min-vh-100">
+        <div class="row w-100">
+            <div class="col-lg-4 col-md-6 col-sm-8 mx-auto">
+                <!-- Tarjeta de login -->
+                <div class="login-container">
+                    <!-- Header con logo -->
+                    <div class="bank-header">
+                        <div class="bank-logo">
+                            <i class="fas fa-university"></i> Pokémon Bank
+                        </div>
+                        <div class="bank-subtitle">Sistema de Cajero Automático</div>
+                    </div>
+
+                    <!-- Formulario de login -->
+                    <div class="login-form">
+                        <form id="loginForm">
+                            <div class="form-group">
+                                <label for="pinInput">
+                                    <i class="fas fa-key"></i> Ingrese su PIN (4 dígitos)
+                                </label>
+                                <input 
+                                    type="password" 
+                                    class="form-control" 
+                                    id="pinInput" 
+                                    placeholder="••••" 
+                                    maxlength="4"
+                                    pattern="[0-9]{4}"
+                                    required
+                                >
+                                <small class="form-text text-muted">
+                                    Ingrese su PIN de 4 dígitos para acceder
+                                </small>
+                            </div>
+
+                            <div class="login-actions">
+                                <button type="button" class="btn btn-secondary" onclick="goBack()">
+                                    <i class="fas fa-arrow-left"></i> Atrás
+                                </button>
+                                <button type="submit" class="btn btn-login">
+                                    <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 4 JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Script para validación del PIN -->
+    <script>
+        // Función para validar el PIN
+        function validatePIN() {
+            const pinInput = document.getElementById('pinInput');
+            const pin = pinInput.value;
+            
+            if (pin === '1234') {
+                // PIN correcto - redirigir a acciones
+                window.location.href = 'acciones.html';
+            } else {
+                // PIN incorrecto
+                alert('PIN incorrecto. Intente nuevamente.');
+                pinInput.value = '';
+                pinInput.focus();
+            }
+        }
+
+        // Event listener para el formulario
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            validatePIN();
+        });
+
+        // Event listener para el campo PIN (solo números)
+        document.getElementById('pinInput').addEventListener('input', function(e) {
+            // Solo permitir números
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+
+        // Función para volver atrás
+        function goBack() {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Bank - Depositar Dinero</title>
+    <!-- Bootstrap 4 CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- CSS personalizado para tema vintage azul -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Contenedor principal -->
+    <div class="container-fluid py-4">
+        <div class="row">
+            <div class="col-12">
+                <!-- Header con información del usuario -->
+                <div class="user-header">
+                    <div class="user-info">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <div class="user-name">
+                                    <i class="fas fa-user"></i> Usuario
+                                </div>
+                                <div class="account-number">
+                                    <i class="fas fa-credit-card"></i> Cuenta: ****-****-****-****
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-md-right">
+                                <div class="text-white-50">
+                                    <i class="fas fa-clock"></i> 
+                                    <span id="currentTime"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Botón Atrás en esquina superior izquierda -->
+                    <div class="back-button-top">
+                        <button class="btn btn-back-top" onclick="goBack()">
+                            <i class="fas fa-arrow-left"></i> Atrás
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Contenedor de depósito -->
+                <div class="deposit-container">
+                    <!-- Header del depósito -->
+                    <div class="deposit-header">
+                        <h2 class="deposit-title">
+                            <i class="fas fa-plus-circle"></i> Depositar Dinero
+                        </h2>
+                    </div>
+
+                    <!-- Formulario de depósito -->
+                    <div class="deposit-form">
+                        <form id="depositForm">
+                            <!-- Tipo de depósito -->
+                            <div class="form-group">
+                                <label for="depositType" class="form-label">
+                                    <i class="fas fa-list"></i> Tipo de Depósito
+                                </label>
+                                <select id="depositType" class="form-control" required>
+                                    <option value="">Seleccione el tipo de depósito</option>
+                                    <option value="cash">Efectivo</option>
+                                    <option value="check">Cheque</option>
+                                    <option value="transfer">Transferencia</option>
+                                </select>
+                            </div>
+
+                            <!-- Monto a depositar -->
+                            <div class="form-group">
+                                <label for="depositAmount" class="form-label">
+                                    <i class="fas fa-dollar-sign"></i> Monto a Depositar
+                                </label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">$</span>
+                                    </div>
+                                    <input 
+                                        type="number" 
+                                        class="form-control" 
+                                        id="depositAmount" 
+                                        placeholder="0.00" 
+                                        step="0.01" 
+                                        min="0.01" 
+                                        max="10000.00"
+                                        required
+                                    >
+                                </div>
+                                <small class="form-text text-muted">
+                                    Monto mínimo: $1.00 | Monto máximo: $10,000.00
+                                </small>
+                            </div>
+
+                            <!-- Montos rápidos -->
+                            <div class="quick-amounts">
+                                <label class="form-label">
+                                    <i class="fas fa-bolt"></i> Montos Rápidos
+                                </label>
+                                <div class="amount-buttons">
+                                    <button type="button" class="btn btn-outline-primary amount-btn" data-amount="50">$50</button>
+                                    <button type="button" class="btn btn-outline-primary amount-btn" data-amount="100">$100</button>
+                                    <button type="button" class="btn btn-outline-primary amount-btn" data-amount="200">$200</button>
+                                    <button type="button" class="btn btn-outline-primary amount-btn" data-amount="500">$500</button>
+                                    <button type="button" class="btn btn-outline-primary amount-btn" data-amount="1000">$1,000</button>
+                                </div>
+                            </div>
+
+                            <!-- Descripción del depósito -->
+                            <div class="form-group">
+                                <label for="depositDescription" class="form-label">
+                                    <i class="fas fa-comment"></i> Descripción (Opcional)
+                                </label>
+                                <textarea 
+                                    class="form-control" 
+                                    id="depositDescription" 
+                                    rows="3" 
+                                    placeholder="Ingrese una descripción del depósito..."
+                                    maxlength="200"
+                                ></textarea>
+                                <small class="form-text text-muted">
+                                    Máximo 200 caracteres
+                                </small>
+                            </div>
+
+                            <!-- Resumen del depósito -->
+                            <div class="deposit-summary">
+                                <h4 class="summary-title">
+                                    <i class="fas fa-calculator"></i> Resumen del Depósito
+                                </h4>
+                                <div class="summary-details">
+                                    <div class="summary-row">
+                                        <span>Monto a depositar:</span>
+                                        <span id="summaryAmount">$0.00</span>
+                                    </div>
+                                    <div class="summary-row">
+                                        <span>Saldo actual:</span>
+                                        <span id="currentBalance">$0.00</span>
+                                    </div>
+                                    <div class="summary-row total">
+                                        <span>Nuevo saldo:</span>
+                                        <span id="newBalance">$0.00</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Botones de acción -->
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-warning" onclick="goBack()">
+                                    <i class="fas fa-times"></i> Cancelar
+                                </button>
+                                <button type="submit" class="btn btn-success">
+                                    <i class="fas fa-check"></i> Confirmar Depósito
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 4 JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Scripts para funcionalidad -->
+    <script>
+        // Función para mostrar la hora actual
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleString('es-ES', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            document.getElementById('currentTime').textContent = timeString;
+        }
+
+        // Actualizar la hora cada segundo
+        updateTime();
+        setInterval(updateTime, 1000);
+
+        // Función para actualizar el resumen del depósito
+        function updateSummary() {
+            const amount = parseFloat(document.getElementById('depositAmount').value) || 0;
+            const currentBalance = 0.00; // Saldo actual
+            const newBalance = currentBalance + amount;
+
+            document.getElementById('summaryAmount').textContent = '$' + amount.toFixed(2);
+            document.getElementById('newBalance').textContent = '$' + newBalance.toFixed(2);
+        }
+
+        // Event listeners
+        document.getElementById('depositAmount').addEventListener('input', updateSummary);
+
+        // Botones de montos rápidos
+        document.querySelectorAll('.amount-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const amount = this.getAttribute('data-amount');
+                document.getElementById('depositAmount').value = amount;
+                updateSummary();
+            });
+        });
+
+        // Función para volver atrás
+        function goBack() {
+            window.location.href = 'acciones.html';
+        }
+
+        // Función para manejar el envío del formulario
+        document.getElementById('depositForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Función de depósito será implementada en la Fase 2');
+        });
+    </script>
+</body>
+</html>

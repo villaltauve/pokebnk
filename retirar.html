@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Bank - Retirar Dinero</title>
+    <!-- Bootstrap 4 CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- CSS personalizado para tema vintage azul -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Contenedor principal -->
+    <div class="container-fluid py-4">
+        <div class="row">
+            <div class="col-12">
+                <!-- Header con información del usuario -->
+                <div class="user-header">
+                    <div class="user-info">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <div class="user-name">
+                                    <i class="fas fa-user"></i> Usuario
+                                </div>
+                                <div class="account-number">
+                                    <i class="fas fa-credit-card"></i> Cuenta: ****-****-****-****
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-md-right">
+                                <div class="text-white-50">
+                                    <i class="fas fa-clock"></i> 
+                                    <span id="currentTime"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Botón Atrás en esquina superior izquierda -->
+                    <div class="back-button-top">
+                        <button class="btn btn-back-top" onclick="goBack()">
+                            <i class="fas fa-arrow-left"></i> Atrás
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Contenedor de retiro -->
+                <div class="withdraw-container">
+                    <!-- Header del retiro -->
+                    <div class="withdraw-header">
+                        <h2 class="withdraw-title">
+                            <i class="fas fa-minus-circle"></i> Retirar Dinero
+                        </h2>
+                    </div>
+
+                    <!-- Formulario de retiro -->
+                    <div class="withdraw-form">
+                        <form id="withdrawForm">
+                            <!-- Saldo disponible -->
+                            <div class="balance-info">
+                                <div class="balance-card">
+                                    <div class="balance-icon">
+                                        <i class="fas fa-wallet"></i>
+                                    </div>
+                                    <div class="balance-details">
+                                        <div class="balance-label">Saldo Disponible</div>
+                                        <div class="balance-amount" id="availableBalance">$0.00</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Monto a retirar -->
+                            <div class="form-group">
+                                <label for="withdrawAmount" class="form-label">
+                                    <i class="fas fa-dollar-sign"></i> Monto a Retirar
+                                </label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">$</span>
+                                    </div>
+                                    <input 
+                                        type="number" 
+                                        class="form-control" 
+                                        id="withdrawAmount" 
+                                        placeholder="0.00" 
+                                        step="0.01" 
+                                        min="1.00" 
+                                        max="0.00"
+                                        required
+                                    >
+                                </div>
+                                <small class="form-text text-muted">
+                                    Monto mínimo: $1.00 | Monto máximo: $0.00
+                                </small>
+                            </div>
+
+                            <!-- Montos rápidos -->
+                            <div class="quick-amounts">
+                                <label class="form-label">
+                                    <i class="fas fa-bolt"></i> Montos Rápidos
+                                </label>
+                                <div class="amount-buttons">
+                                    <button type="button" class="btn btn-outline-primary amount-btn" data-amount="20">$20</button>
+                                    <button type="button" class="btn btn-outline-primary amount-btn" data-amount="50">$50</button>
+                                    <button type="button" class="btn btn-outline-primary amount-btn" data-amount="100">$100</button>
+                                    <button type="button" class="btn btn-outline-primary amount-btn" data-amount="200">$200</button>
+                                    <button type="button" class="btn btn-outline-primary amount-btn" data-amount="500">$500</button>
+                                </div>
+                            </div>
+
+                            <!-- Tipo de retiro -->
+                            <div class="form-group">
+                                <label for="withdrawType" class="form-label">
+                                    <i class="fas fa-list"></i> Tipo de Retiro
+                                </label>
+                                <select id="withdrawType" class="form-control" required>
+                                    <option value="">Seleccione el tipo de retiro</option>
+                                    <option value="cash">Efectivo</option>
+                                    <option value="atm">Cajero Automático</option>
+                                    <option value="transfer">Transferencia</option>
+                                </select>
+                            </div>
+
+                            <!-- Descripción del retiro -->
+                            <div class="form-group">
+                                <label for="withdrawDescription" class="form-label">
+                                    <i class="fas fa-comment"></i> Descripción (Opcional)
+                                </label>
+                                <textarea 
+                                    class="form-control" 
+                                    id="withdrawDescription" 
+                                    rows="3" 
+                                    placeholder="Ingrese una descripción del retiro..."
+                                    maxlength="200"
+                                ></textarea>
+                                <small class="form-text text-muted">
+                                    Máximo 200 caracteres
+                                </small>
+                            </div>
+
+                            <!-- Resumen del retiro -->
+                            <div class="withdraw-summary">
+                                <h4 class="summary-title">
+                                    <i class="fas fa-calculator"></i> Resumen del Retiro
+                                </h4>
+                                <div class="summary-details">
+                                    <div class="summary-row">
+                                        <span>Monto a retirar:</span>
+                                        <span id="summaryAmount">$0.00</span>
+                                    </div>
+                                    <div class="summary-row">
+                                        <span>Saldo actual:</span>
+                                        <span id="currentBalance">$0.00</span>
+                                    </div>
+                                    <div class="summary-row total">
+                                        <span>Nuevo saldo:</span>
+                                        <span id="newBalance">$0.00</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Botones de acción -->
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-warning" onclick="goBack()">
+                                    <i class="fas fa-times"></i> Cancelar
+                                </button>
+                                <button type="submit" class="btn btn-warning">
+                                    <i class="fas fa-check"></i> Confirmar Retiro
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 4 JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Scripts para funcionalidad -->
+    <script>
+        // Función para mostrar la hora actual
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleString('es-ES', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            document.getElementById('currentTime').textContent = timeString;
+        }
+
+        // Actualizar la hora cada segundo
+        updateTime();
+        setInterval(updateTime, 1000);
+
+        // Función para actualizar el resumen del retiro
+        function updateSummary() {
+            const amount = parseFloat(document.getElementById('withdrawAmount').value) || 0;
+            const currentBalance = 0.00; // Saldo actual
+            const newBalance = currentBalance - amount;
+
+            document.getElementById('summaryAmount').textContent = '$' + amount.toFixed(2);
+            document.getElementById('newBalance').textContent = '$' + newBalance.toFixed(2);
+
+            // Validar que no exceda el saldo disponible
+            if (amount > currentBalance) {
+                document.getElementById('newBalance').style.color = 'var(--danger-red)';
+                document.getElementById('withdrawAmount').setCustomValidity('El monto excede el saldo disponible');
+            } else {
+                document.getElementById('newBalance').style.color = 'var(--primary-blue)';
+                document.getElementById('withdrawAmount').setCustomValidity('');
+            }
+        }
+
+        // Event listeners
+        document.getElementById('withdrawAmount').addEventListener('input', updateSummary);
+
+        // Botones de montos rápidos
+        document.querySelectorAll('.amount-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const amount = this.getAttribute('data-amount');
+                document.getElementById('withdrawAmount').value = amount;
+                updateSummary();
+            });
+        });
+
+        // Función para volver atrás
+        function goBack() {
+            window.location.href = 'acciones.html';
+        }
+
+        // Función para manejar el envío del formulario
+        document.getElementById('withdrawForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Función de retiro será implementada en la Fase 2');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Bank - Menú Principal</title>
+    <!-- Bootstrap 4 CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- CSS personalizado para tema vintage azul -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Contenedor principal -->
+    <div class="container-fluid py-4">
+        <div class="row">
+            <div class="col-12">
+                <!-- Header con información del usuario -->
+                <div class="user-header">
+                    <div class="user-info">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <div class="user-name">
+                                    <i class="fas fa-user"></i> Usuario
+                                </div>
+                                <div class="account-number">
+                                    <i class="fas fa-credit-card"></i> Cuenta: ****-****-****-****
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-md-right">
+                                <div class="text-white-50">
+                                    <i class="fas fa-clock"></i> 
+                                    <span id="currentTime"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contenedor de acciones -->
+                <div class="actions-container">
+                    <h2 class="actions-title">
+                        <i class="fas fa-list"></i> Seleccione una Operación
+                    </h2>
+
+                    <!-- Grid de botones de acción -->
+                    <div class="action-buttons">
+                        <!-- Botón Depositar -->
+                        <a href="depositar.html" class="action-btn btn-deposit">
+                            <i class="fas fa-plus-circle"></i>
+                            <span>Depositar</span>
+                            <small>Agregar dinero a su cuenta</small>
+                        </a>
+
+                        <!-- Botón Retirar -->
+                        <a href="retirar.html" class="action-btn btn-withdraw">
+                            <i class="fas fa-minus-circle"></i>
+                            <span>Retirar</span>
+                            <small>Sacar dinero de su cuenta</small>
+                        </a>
+
+                        <!-- Botón Consultar Saldo -->
+                        <a href="consultar.html" class="action-btn btn-balance">
+                            <i class="fas fa-dollar-sign"></i>
+                            <span>Consultar Saldo</span>
+                            <small>Ver saldo disponible</small>
+                        </a>
+
+                        <!-- Botón Pagar Servicios -->
+                        <a href="pagos.html" class="action-btn btn-pay-services">
+                            <i class="fas fa-receipt"></i>
+                            <span>Pagar Servicios</span>
+                            <small>Pagar facturas y servicios</small>
+                        </a>
+                    </div>
+
+                    <!-- Sección de salir -->
+                    <div class="exit-section">
+                        <a href="login.html" class="btn-exit-full">
+                            <i class="fas fa-sign-out-alt"></i> Salir del Sistema
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 4 JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Script para mostrar la hora actual -->
+    <script>
+        // Función para mostrar la hora actual
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleString('es-ES', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            document.getElementById('currentTime').textContent = timeString;
+        }
+
+        // Actualizar la hora cada segundo
+        updateTime();
+        setInterval(updateTime, 1000);
+
+    </script>
+</body>
+</html>
