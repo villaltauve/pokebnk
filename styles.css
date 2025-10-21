@@ -1,46 +1,63 @@
-/* ========================================
-   POKÉMON BANK - SISTEMA DE CAJERO AUTOMÁTICO
-   CSS Consolidado - Tema Vintage Azul
-   ======================================== */
+/* pokebnk css */
 
-/* Variables CSS para tema vintage azul */
+/* Variables */
 :root {
     --primary-blue: #1e3a8a;
     --secondary-blue: #3b82f6;
     --light-blue: #dbeafe;
-    --dark-blue: #1e40af;
     --success-green: #10b981;
     --warning-orange: #f59e0b;
     --danger-red: #ef4444;
-    --vintage-shadow: 0 4px 8px rgba(30, 58, 138, 0.3);
+    --shadow: 0 4px 8px rgba(30, 58, 138, 0.3);
 }
 
-/* ========================================
-   ESTILOS GENERALES
-   ======================================== */
-
+/* Base */
 body {
     background: var(--primary-blue);
     min-height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* ========================================
-   ESTILOS PARA INDEX.HTML (Página Principal)
-   ======================================== */
+/* Container */
+.container-fluid {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
 
-/* Header principal */
-.main-header {
+.main-container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    border: 3px solid var(--secondary-blue);
+    margin: 2rem auto;
+    overflow: hidden;
+    max-width: 1200px;
+}
+
+/* Headers */
+.main-header, .user-header, .bank-header, .history-header, .charts-header, 
+.deposit-header, .withdraw-header, .balance-header, .payment-header {
     background: var(--primary-blue);
     color: white;
-    padding: 3rem 0;
+    padding: 1.5rem 2rem;
     text-align: center;
-    box-shadow: var(--vintage-shadow);
+    box-shadow: var(--shadow);
+}
+
+.deposit-header { background: var(--success-green); }
+.withdraw-header { background: var(--warning-orange); }
+.balance-header { background: var(--secondary-blue); }
+
+/* Titles */
+.bank-logo, .history-title, .charts-title, .deposit-title, 
+.withdraw-title, .balance-title, .payment-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
 }
 
 .bank-logo {
     font-size: 3.5rem;
-    font-weight: bold;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     margin-bottom: 1rem;
 }
@@ -58,220 +75,27 @@ body {
     margin: 0 auto;
 }
 
-/* Contenedor principal */
-.main-container {
-    background: white;
-    border-radius: 20px;
-    box-shadow: var(--vintage-shadow);
-    border: 3px solid var(--secondary-blue);
-    margin: 2rem auto;
-    overflow: hidden;
-}
-
-/* Sección de bienvenida */
-.welcome-section {
-    padding: 3rem 2rem;
-    text-align: center;
-    background: var(--light-blue);
-}
-
-.welcome-title {
+/* Actions title */
+.actions-title {
     color: var(--primary-blue);
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     font-weight: bold;
-    margin-bottom: 1rem;
-}
-
-.welcome-text {
-    color: var(--dark-blue);
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Botones de acción principal */
-.action-buttons {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    padding: 2rem;
-}
-
-.action-btn {
-    padding: 2rem;
-    border-radius: 15px;
-    border: none;
-    color: white;
-    font-size: 1.2rem;
-    font-weight: 600;
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     text-align: center;
-    transition: all 0.3s ease;
-    box-shadow: var(--vintage-shadow);
-    min-height: 150px;
-    justify-content: center;
-}
-
-.action-btn:hover {
-    transform: translateY(-5px);
-    text-decoration: none;
-    color: white;
-}
-
-.action-btn i {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
-/* Colores específicos para cada acción */
-.btn-login {
-    background: var(--primary-blue);
-}
-
-.btn-info {
-    background: var(--success-green);
-}
-
-.btn-demo {
-    background: var(--warning-orange);
-}
-
-/* Footer */
-.footer {
-    background: var(--primary-blue);
-    color: white;
-    padding: 2rem;
-    text-align: center;
-}
-
-.footer-text {
-    margin-bottom: 1rem;
-}
-
-.footer-links {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-}
-
-.footer-link {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.footer-link:hover {
-    color: var(--light-blue);
-    text-decoration: none;
-}
-
-/* ========================================
-   ESTILOS PARA LOGIN.HTML
-   ======================================== */
-
-/* Contenedor principal del login */
-.login-container {
-    background: white;
-    border-radius: 15px;
-    box-shadow: var(--vintage-shadow);
-    border: 3px solid var(--secondary-blue);
-}
-
-/* Header con logo de Pokémon Bank */
-.bank-header {
-    background: var(--primary-blue);
-    color: white;
-    border-radius: 12px 12px 0 0;
-    padding: 2rem;
-    text-align: center;
-}
-
-.bank-logo {
-    font-size: 2.5rem;
-    font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-}
-
-.bank-subtitle {
-    font-size: 1.1rem;
-    opacity: 0.9;
-    margin-top: 0.5rem;
-}
-
-/* Formulario de login */
-.login-form {
-    padding: 2rem;
-}
-
-.form-group label {
-    color: var(--primary-blue);
-    font-weight: 600;
-    font-size: 1.1rem;
-}
-
-.form-control {
-    border: 2px solid var(--light-blue);
-    border-radius: 8px;
-    padding: 0.75rem 1rem;
-    font-size: 1.1rem;
-    transition: all 0.3s ease;
-}
-
-.form-control:focus {
-    border-color: var(--secondary-blue);
-    box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25);
-}
-
-/* Botón de login con estilo vintage */
-.btn-login {
-    background: var(--primary-blue);
-    border: none;
-    color: white;
-    padding: 0.75rem 2rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border-radius: 8px;
-    box-shadow: var(--vintage-shadow);
-    transition: all 0.3s ease;
-    width: 100%;
-}
-
-.btn-login:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(30, 58, 138, 0.4);
-}
-
-/* Footer con información de seguridad */
-.security-footer {
+    margin-bottom: 2.5rem;
+    padding: 1.5rem 2rem;
     background: var(--light-blue);
-    padding: 1rem;
-    border-radius: 0 0 12px 12px;
-    text-align: center;
-    font-size: 0.9rem;
-    color: var(--primary-blue);
+    border-radius: 12px;
+    border: 2px solid var(--secondary-blue);
+    box-shadow: 0 2px 4px rgba(30, 58, 138, 0.1);
 }
 
-/* ========================================
-   ESTILOS PARA ACCIONES.HTML
-   ======================================== */
-
-/* Header con información del usuario */
-.user-header {
-    background: var(--primary-blue);
-    color: white;
-    border-radius: 15px;
-    box-shadow: var(--vintage-shadow);
-    margin-bottom: 2rem;
-    position: relative;
+.actions-title i {
+    color: var(--secondary-blue);
+    margin-right: 0.75rem;
+    font-size: 1.5rem;
 }
 
+/* User info */
 .user-info {
     padding: 2rem;
 }
@@ -287,184 +111,234 @@ body {
     opacity: 0.9;
 }
 
-/* Contenedor de acciones */
-.actions-container {
+/* Welcome section */
+.welcome-section {
+    padding: 3rem 2rem;
+    text-align: center;
+    background: var(--light-blue);
+}
+
+.welcome-title {
+    color: var(--primary-blue);
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.welcome-text {
+    color: var(--primary-blue);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Forms */
+.login-container, .deposit-container, .withdraw-container, 
+.balance-container, .payment-container, .history-container, 
+.charts-container, .actions-container {
     background: white;
     border-radius: 15px;
-    box-shadow: var(--vintage-shadow);
+    box-shadow: var(--shadow);
     border: 3px solid var(--secondary-blue);
-    padding: 2rem;
+    overflow: hidden;
 }
 
-.actions-title {
+.login-form, .deposit-form, .withdraw-form, .payment-form, .balance-content {
+    padding: 2.5rem;
+}
+
+/* Form elements */
+.form-group label, .form-label {
     color: var(--primary-blue);
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 2rem;
-    border-bottom: 2px solid var(--light-blue);
-    padding-bottom: 1rem;
+    font-weight: 600;
+    font-size: 1.1rem;
 }
 
-/* Grid de botones de acción */
+.form-control {
+    border: 2px solid var(--light-blue);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    background-color: white;
+    color: var(--primary-blue);
+}
+
+.form-control:focus {
+    border-color: var(--secondary-blue);
+    box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25);
+    background-color: white;
+    color: var(--primary-blue);
+}
+
+/* Select dropdown */
+select.form-control {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231e3a8a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1rem;
+    padding-right: 2.5rem;
+    min-height: 3rem;
+    line-height: 1.5;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+select.form-control:focus {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233b82f6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+}
+
+select.form-control option {
+    background-color: white;
+    color: var(--primary-blue);
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    line-height: 1.4;
+    min-height: 2.5rem;
+    text-shadow: none;
+    -webkit-text-stroke: 0;
+    font-family: inherit;
+    white-space: nowrap;
+    overflow: visible;
+}
+
+select.form-control option:hover,
+select.form-control option:focus {
+    background-color: var(--light-blue);
+    color: var(--primary-blue);
+}
+
+select.form-control option:checked {
+    background-color: var(--secondary-blue);
+    color: white;
+    font-weight: 600;
+}
+
+/* Input group */
+.input-group-text {
+    background: var(--light-blue);
+    border: 2px solid var(--light-blue);
+    color: var(--primary-blue);
+    font-weight: 600;
+}
+
+/* Buttons */
+.btn, .action-btn {
+    padding: 0.75rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border: none;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.btn:hover, .action-btn:hover {
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+/* Button colors */
+.btn-login, .btn-pay-services { background: var(--primary-blue); color: white; }
+.btn-info, .btn-deposit, .btn-success { background: var(--success-green); color: white; }
+.btn-demo, .btn-withdraw, .btn-warning, .btn-secondary { background: var(--warning-orange); color: white; }
+.btn-balance, .btn-primary { background: var(--secondary-blue); color: white; }
+.btn-exit, .btn-danger { background: var(--danger-red); color: white; }
+
+/* Button hovers */
+.btn-primary:hover, .btn-balance:hover { background: var(--primary-blue); color: white; }
+.btn-secondary:hover, .btn-warning:hover { background: #d97706; color: white; }
+.btn-success:hover, .btn-deposit:hover { background: #059669; color: white; }
+.btn-danger:hover, .btn-exit:hover { background: #dc2626; color: white; }
+
+/* Action buttons */
 .action-buttons {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
+    gap: 2rem;
+    padding: 2rem;
 }
 
-/* Estilos para botones de acción */
 .action-btn {
-    padding: 1.5rem;
-    border-radius: 12px;
-    border: none;
+    padding: 2rem;
+    border-radius: 15px;
     color: white;
-    font-size: 1.1rem;
-    font-weight: 600;
-    text-decoration: none;
+    font-size: 1.2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    transition: all 0.3s ease;
-    box-shadow: var(--vintage-shadow);
-    min-height: 120px;
+    box-shadow: var(--shadow);
+    min-height: 150px;
     justify-content: center;
 }
 
 .action-btn:hover {
-    transform: translateY(-3px);
+    transform: translateY(-5px);
     text-decoration: none;
     color: white;
 }
 
 .action-btn i {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
+    font-size: 3rem;
+    margin-bottom: 1rem;
 }
 
-/* Colores específicos para cada acción */
-.btn-deposit {
-    background: var(--success-green);
-}
-
-.btn-withdraw {
-    background: var(--warning-orange);
-}
-
-.btn-balance {
-    background: var(--secondary-blue);
-}
-
-.btn-pay-services {
-    background: var(--primary-blue);
-}
-
-.btn-exit {
-    background: var(--danger-red);
-}
-
-/* Botón de salir en la parte inferior */
-.exit-section {
-    border-top: 2px solid var(--light-blue);
-    padding-top: 1.5rem;
-    text-align: center;
-}
-
-.btn-exit-full {
-    background: var(--danger-red);
-    color: white;
-    padding: 0.75rem 2rem;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    transition: all 0.3s ease;
-    box-shadow: var(--vintage-shadow);
-}
-
-.btn-exit-full:hover {
-    transform: translateY(-2px);
-    text-decoration: none;
-    color: white;
-}
-
-/* ========================================
-   ESTILOS PARA HISTORIAL.HTML
-   ======================================== */
-
-/* Contenedor principal del historial */
-.history-container {
-    background: white;
-    border-radius: 15px;
-    box-shadow: var(--vintage-shadow);
-    border: 3px solid var(--secondary-blue);
-    overflow: hidden;
-}
-
-.history-header {
-    background: var(--primary-blue);
-    color: white;
-    padding: 1.5rem 2rem;
-    text-align: center;
-}
-
-.history-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin: 0;
-}
-
-/* Filtros y controles */
-.history-controls {
+/* Cards */
+.balance-card, .balance-card-large, .detail-card, .stat-card, 
+.chart-card, .summary-card {
     background: var(--light-blue);
-    padding: 1.5rem 2rem;
-    border-bottom: 2px solid var(--secondary-blue);
-}
-
-.filter-group {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.filter-select {
     border: 2px solid var(--secondary-blue);
-    border-radius: 8px;
-    padding: 0.5rem 1rem;
-    background: white;
-    color: var(--primary-blue);
-    font-weight: 600;
-}
-
-.btn-filter {
-    background: var(--secondary-blue);
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    font-weight: 600;
+    border-radius: 12px;
+    padding: 1.75rem;
     transition: all 0.3s ease;
+    margin-bottom: 1rem;
 }
 
-.btn-filter:hover {
-    background: var(--primary-blue);
+.balance-card-large {
+    border: 3px solid var(--secondary-blue);
+    border-radius: 15px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
 }
 
-/* Tabla de transacciones */
-.transactions-table {
-    margin: 0;
+.detail-card:hover, .stat-card:hover, .chart-card:hover {
+    border-color: var(--secondary-blue);
+    box-shadow: var(--shadow);
 }
 
-.table {
-    margin-bottom: 0;
+/* Grids */
+.balance-details-grid, .stats-grid, .charts-grid, .options-grid {
+    display: grid;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    padding: 0 0.5rem;
 }
 
+.balance-details-grid, .stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.charts-grid {
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    gap: 2rem;
+}
+
+.options-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+/* Tables */
 .table thead th {
     background: var(--primary-blue);
     color: white;
@@ -484,7 +358,7 @@ body {
     background-color: rgba(59, 130, 246, 0.1);
 }
 
-/* Estilos para tipos de transacción */
+/* Transaction types */
 .transaction-type {
     display: inline-flex;
     align-items: center;
@@ -514,53 +388,51 @@ body {
     color: var(--secondary-blue);
 }
 
-/* Estilos para montos */
+/* Amounts */
 .amount {
     font-weight: bold;
     font-size: 1.1rem;
 }
 
-.amount-positive {
-    color: var(--success-green);
+.amount-positive { color: var(--success-green); }
+.amount-negative { color: var(--danger-red); }
+
+/* Controls */
+.filter-group, .control-group {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-.amount-negative {
-    color: var(--danger-red);
-}
-
-/* Paginación */
-.pagination-container {
-    background: var(--light-blue);
-    padding: 1.5rem 2rem;
-    text-align: center;
-}
-
-.pagination {
-    justify-content: center;
-}
-
-.page-link {
+.filter-select, .control-select {
+    border: 2px solid var(--secondary-blue);
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    background: white;
     color: var(--primary-blue);
-    border-color: var(--secondary-blue);
+    font-weight: 600;
 }
 
-.page-link:hover {
-    background-color: var(--secondary-blue);
+.btn-filter, .btn-control {
+    background: var(--secondary-blue);
     color: white;
+    border: 2px solid var(--secondary-blue);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
-.page-item.active .page-link {
-    background-color: var(--primary-blue);
+.btn-filter:hover, .btn-control:hover {
+    background: var(--primary-blue);
     border-color: var(--primary-blue);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
 }
 
-/* Botones de navegación */
-.navigation-buttons {
-    padding: 1.5rem 2rem;
-    text-align: center;
-    border-top: 2px solid var(--light-blue);
-}
-
+/* Navigation buttons */
 .btn-nav {
     margin: 0 0.5rem;
     padding: 0.75rem 1.5rem;
@@ -570,283 +442,228 @@ body {
     display: inline-flex;
     align-items: center;
     transition: all 0.3s ease;
+    border: 2px solid transparent;
 }
 
 .btn-back {
     background: var(--secondary-blue);
     color: white;
+    border-color: var(--secondary-blue);
 }
 
 .btn-back:hover {
     background: var(--primary-blue);
     color: white;
     text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
 }
 
-.btn-export {
+.btn-export, .btn-refresh {
     background: var(--success-green);
     color: white;
+    border-color: var(--success-green);
 }
 
-.btn-export:hover {
+.btn-export:hover, .btn-refresh:hover {
     background: #059669;
     color: white;
     text-decoration: none;
-}
-
-/* ========================================
-   ESTILOS PARA GRAFICO.HTML
-   ======================================== */
-
-/* Contenedor principal de gráficos */
-.charts-container {
-    background: white;
-    border-radius: 15px;
-    box-shadow: var(--vintage-shadow);
-    border: 3px solid var(--secondary-blue);
-    overflow: hidden;
-}
-
-.charts-header {
-    background: var(--primary-blue);
-    color: white;
-    padding: 1.5rem 2rem;
-    text-align: center;
-}
-
-.charts-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin: 0;
-}
-
-/* Controles de gráficos */
-.charts-controls {
-    background: var(--light-blue);
-    padding: 1.5rem 2rem;
-    border-bottom: 2px solid var(--secondary-blue);
-}
-
-.control-group {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.control-select {
-    border: 2px solid var(--secondary-blue);
-    border-radius: 8px;
-    padding: 0.5rem 1rem;
-    background: white;
-    color: var(--primary-blue);
-    font-weight: 600;
-}
-
-.btn-control {
-    background: var(--secondary-blue);
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.btn-control:hover {
-    background: var(--primary-blue);
-}
-
-/* Contenedor de gráficos */
-.charts-content {
-    padding: 2rem;
-}
-
-/* Grid de gráficos */
-.charts-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 2rem;
-    margin-bottom: 2rem;
-}
-
-/* Tarjetas de gráficos */
-.chart-card {
-    background: white;
-    border: 2px solid var(--light-blue);
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 2px 4px rgba(30, 58, 138, 0.1);
-    transition: all 0.3s ease;
-}
-
-.chart-card:hover {
-    box-shadow: var(--vintage-shadow);
     transform: translateY(-2px);
+    box-shadow: var(--shadow);
 }
 
-.chart-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
-    border-bottom: 2px solid var(--light-blue);
+/* Back button top */
+.btn-back-top {
+    background: var(--secondary-blue);
+    border: 2px solid var(--secondary-blue);
+    color: white;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.3s ease;
 }
 
-.chart-title {
+.btn-back-top:hover {
+    background: var(--primary-blue);
+    border-color: var(--primary-blue);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+/* Pagination */
+.pagination .page-link {
     color: var(--primary-blue);
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin: 0;
+    border-color: var(--secondary-blue);
+    padding: 0.5rem 0.75rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
 }
 
-.chart-icon {
-    color: var(--secondary-blue);
-    font-size: 1.5rem;
+.pagination .page-link:hover {
+    background-color: var(--secondary-blue);
+    color: white;
+    border-color: var(--secondary-blue);
+    transform: translateY(-1px);
 }
 
-/* Contenedores de gráficos */
-.chart-container {
-    position: relative;
-    height: 300px;
-    margin-bottom: 1rem;
+.pagination .page-item.active .page-link {
+    background-color: var(--primary-blue);
+    border-color: var(--primary-blue);
+    color: white;
 }
 
-.chart-placeholder {
+.pagination .page-item.disabled .page-link {
+    color: #6c757d;
+    background-color: #f8f9fa;
+    border-color: #dee2e6;
+}
+
+/* Option buttons */
+.option-btn {
+    background: var(--light-blue);
+    border: 2px solid var(--secondary-blue);
+    border-radius: 12px;
+    padding: 1.25rem;
+    color: var(--primary-blue);
+    font-weight: 600;
+    text-decoration: none;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 100%;
-    background: var(--light-blue);
-    border: 2px dashed var(--secondary-blue);
-    border-radius: 8px;
-    color: var(--primary-blue);
-    font-weight: 600;
-}
-
-.chart-placeholder i {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    opacity: 0.7;
-}
-
-/* Estadísticas rápidas */
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
-
-.stat-card {
-    background: var(--light-blue);
-    border: 2px solid var(--secondary-blue);
-    border-radius: 12px;
-    padding: 1.5rem;
     text-align: center;
     transition: all 0.3s ease;
-}
-
-.stat-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--vintage-shadow);
-}
-
-.stat-value {
-    font-size: 2rem;
-    font-weight: bold;
-    color: var(--primary-blue);
+    cursor: pointer;
+    min-height: 110px;
+    justify-content: center;
     margin-bottom: 0.5rem;
 }
 
-.stat-label {
-    color: var(--dark-blue);
-    font-weight: 600;
-    font-size: 0.9rem;
-}
-
-.stat-icon {
-    color: var(--secondary-blue);
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-}
-
-.btn-refresh {
-    background: var(--success-green);
-    color: white;
-}
-
-.btn-refresh:hover {
-    background: #059669;
+.option-btn:hover {
+    background: var(--secondary-blue);
     color: white;
     text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
 }
 
-/* ========================================
-   ESTILOS PARA DEPOSITAR.HTML
-   ======================================== */
-
-/* Contenedor de depósito */
-.deposit-container {
-    background: white;
-    border-radius: 15px;
-    box-shadow: var(--vintage-shadow);
-    border: 3px solid var(--secondary-blue);
-    overflow: hidden;
-}
-
-.deposit-header {
-    background: var(--success-green);
-    color: white;
-    padding: 1.5rem 2rem;
-    text-align: center;
-}
-
-.deposit-title {
+.option-btn i {
     font-size: 1.5rem;
-    font-weight: bold;
-    margin: 0;
-}
-
-.deposit-form {
-    padding: 2rem;
-}
-
-.form-label {
-    color: var(--primary-blue);
-    font-weight: 600;
-    font-size: 1.1rem;
     margin-bottom: 0.5rem;
 }
 
-.form-control {
-    border: 2px solid var(--light-blue);
-    border-radius: 8px;
-    padding: 0.75rem 1rem;
-    font-size: 1.1rem;
-    transition: all 0.3s ease;
-}
-
-.form-control:focus {
-    border-color: var(--secondary-blue);
-    box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25);
-}
-
-.input-group-text {
-    background: var(--light-blue);
-    border: 2px solid var(--light-blue);
-    color: var(--primary-blue);
+.option-btn span {
+    font-size: 0.9rem;
     font-weight: 600;
 }
 
-/* Montos rápidos */
+/* Exit section */
+.exit-section {
+    border-top: 2px solid var(--light-blue);
+    padding: 2rem;
+    text-align: center;
+    background: var(--light-blue);
+    margin: 2rem -2rem -2rem -2rem;
+    border-radius: 0 0 15px 15px;
+}
+
+.btn-exit-full {
+    background: var(--danger-red);
+    color: white;
+    padding: 1rem 2.5rem;
+    border: 2px solid var(--danger-red);
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(239, 68, 68, 0.3);
+    min-width: 200px;
+    justify-content: center;
+}
+
+.btn-exit-full:hover {
+    transform: translateY(-3px);
+    text-decoration: none;
+    color: white;
+    background: #dc2626;
+    border-color: #dc2626;
+    box-shadow: 0 6px 12px rgba(239, 68, 68, 0.4);
+}
+
+.btn-exit-full i {
+    margin-right: 0.75rem;
+    font-size: 1.1rem;
+}
+
+/* Navigation containers */
+.navigation-buttons {
+    padding: 1.5rem 2rem;
+    text-align: center;
+    border-top: 2px solid var(--light-blue);
+}
+
+.balance-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+/* Additional sections */
+.balance-options {
+    margin-bottom: 2.5rem;
+    padding: 0 0.5rem;
+}
+
+.options-title {
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.balance-main {
+    margin-bottom: 2.5rem;
+}
+
+.balance-details-grid {
+    margin-bottom: 2.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
 .quick-amounts {
+    margin: 2rem 0;
+}
+
+.deposit-summary {
+    margin: 2.5rem 0;
+}
+
+.table-responsive {
     margin: 1.5rem 0;
 }
 
+.history-controls, .charts-controls {
+    padding: 2rem;
+}
+
+/* Quick amount buttons */
 .amount-buttons {
     display: flex;
     gap: 0.5rem;
@@ -861,14 +678,16 @@ body {
     padding: 0.5rem 1rem;
     border-radius: 8px;
     transition: all 0.3s ease;
+    background: white;
 }
 
 .amount-btn:hover {
     background: var(--secondary-blue);
     color: white;
+    border-color: var(--secondary-blue);
 }
 
-/* Resumen del depósito */
+/* Deposit summary */
 .deposit-summary {
     background: var(--light-blue);
     border: 2px solid var(--secondary-blue);
@@ -909,663 +728,71 @@ body {
     padding: 0.75rem 0;
 }
 
-/* Botones de acción */
-.form-actions {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    margin-top: 2rem;
-}
-
-/* Botones de login */
-.login-actions {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    margin-top: 1.5rem;
-}
-
-/* Botón Atrás en esquina superior derecha */
-.back-button-top {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    z-index: 10;
-}
-
-.btn-back-top {
-    background: var(--secondary-blue);
-    border: 2px solid var(--secondary-blue);
-    color: white;
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-    font-weight: 600;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-}
-
-.btn-back-top:hover {
+/* Footer */
+.footer {
     background: var(--primary-blue);
-    border-color: var(--primary-blue);
     color: white;
-}
-
-.btn {
-    padding: 0.75rem 2rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    border: none;
-}
-
-.btn-secondary {
-    background: var(--warning-orange);
-    color: white;
-}
-
-.btn-secondary:hover {
-    background: #d97706;
-    color: white;
-}
-
-.btn-success {
-    background: var(--success-green);
-    color: white;
-}
-
-.btn-success:hover {
-    background: #059669;
-    color: white;
-}
-
-/* ========================================
-   ESTILOS PARA RETIRAR.HTML
-   ======================================== */
-
-/* Contenedor de retiro */
-.withdraw-container {
-    background: white;
-    border-radius: 15px;
-    box-shadow: var(--vintage-shadow);
-    border: 3px solid var(--secondary-blue);
-    overflow: hidden;
-}
-
-.withdraw-header {
-    background: var(--warning-orange);
-    color: white;
-    padding: 1.5rem 2rem;
+    padding: 2rem;
     text-align: center;
 }
 
-.withdraw-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin: 0;
-}
-
-.withdraw-form {
-    padding: 2rem;
-}
-
-/* Información de saldo */
-.balance-info {
-    margin-bottom: 2rem;
-}
-
-.balance-card {
-    background: var(--light-blue);
-    border: 2px solid var(--secondary-blue);
-    border-radius: 12px;
-    padding: 1.5rem;
+.footer-links {
     display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.balance-icon {
-    font-size: 2.5rem;
-    color: var(--secondary-blue);
-}
-
-.balance-details {
-    flex: 1;
-}
-
-.balance-label {
-    color: var(--primary-blue);
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-}
-
-.balance-amount {
-    color: var(--success-green);
-    font-size: 2rem;
-    font-weight: bold;
-}
-
-/* Resumen del retiro */
-.withdraw-summary {
-    background: var(--light-blue);
-    border: 2px solid var(--secondary-blue);
-    border-radius: 12px;
-    padding: 1.5rem;
-    margin: 2rem 0;
-}
-
-.btn-warning {
-    background: var(--warning-orange);
-    color: white;
-}
-
-.btn-warning:hover {
-    background: #d97706;
-    color: white;
-}
-
-/* ========================================
-   ESTILOS PARA CONSULTAR.HTML
-   ======================================== */
-
-/* Contenedor de consulta */
-.balance-container {
-    background: white;
-    border-radius: 15px;
-    box-shadow: var(--vintage-shadow);
-    border: 3px solid var(--secondary-blue);
-    overflow: hidden;
-}
-
-.balance-header {
-    background: var(--secondary-blue);
-    color: white;
-    padding: 1.5rem 2rem;
-    text-align: center;
-}
-
-.balance-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin: 0;
-}
-
-.balance-content {
-    padding: 2rem;
-}
-
-/* Información principal del saldo */
-.balance-main {
-    margin-bottom: 2rem;
-}
-
-.balance-card-large {
-    background: var(--light-blue);
-    border: 3px solid var(--secondary-blue);
-    border-radius: 15px;
-    padding: 2rem;
-    display: flex;
-    align-items: center;
+    justify-content: center;
     gap: 2rem;
-    text-align: center;
+    flex-wrap: wrap;
 }
 
-.balance-icon-large {
-    font-size: 4rem;
-    color: var(--secondary-blue);
-}
-
-.balance-details-large {
-    flex: 1;
-}
-
-.balance-label-large {
-    color: var(--primary-blue);
-    font-size: 1.2rem;
+.footer-link {
+    color: white;
+    text-decoration: none;
     font-weight: 600;
-    margin-bottom: 1rem;
-}
-
-.balance-amount-large {
-    color: var(--success-green);
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-}
-
-.balance-date {
-    color: var(--dark-blue);
-    font-size: 0.9rem;
-    opacity: 0.8;
-}
-
-/* Grid de detalles */
-.balance-details-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
-
-.detail-card {
-    background: white;
-    border: 2px solid var(--light-blue);
-    border-radius: 12px;
-    padding: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
     transition: all 0.3s ease;
 }
 
-.detail-card:hover {
-    border-color: var(--secondary-blue);
-    box-shadow: var(--vintage-shadow);
-}
-
-.detail-icon {
-    font-size: 2rem;
-    color: var(--secondary-blue);
-}
-
-.detail-content {
-    flex: 1;
-}
-
-.detail-label {
-    color: var(--primary-blue);
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin-bottom: 0.25rem;
-}
-
-.detail-value {
-    color: var(--dark-blue);
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 0.25rem;
-}
-
-.detail-date {
-    color: var(--dark-blue);
-    font-size: 0.8rem;
-    opacity: 0.7;
-}
-
-/* Opciones adicionales */
-.balance-options {
-    margin-bottom: 2rem;
-}
-
-.options-title {
-    color: var(--primary-blue);
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-    text-align: center;
-}
-
-.options-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1rem;
-}
-
-.option-btn {
-    background: var(--light-blue);
-    border: 2px solid var(--secondary-blue);
-    border-radius: 12px;
-    padding: 1rem;
-    color: var(--primary-blue);
-    font-weight: 600;
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.option-btn:hover {
-    background: var(--secondary-blue);
-    color: white;
+.footer-link:hover {
+    color: var(--light-blue);
     text-decoration: none;
 }
 
-.option-btn i {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-}
-
-/* Botones de acción */
-.balance-actions {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    margin-top: 2rem;
-}
-
-.btn-primary {
-    background: var(--secondary-blue);
-    color: white;
-}
-
-.btn-primary:hover {
-    background: var(--primary-blue);
-    color: white;
-}
-
-/* Iconos simplificados */
-.icon-print::before {
-    content: "🖨️";
-    font-size: 1.5rem;
-}
-
-.icon-history::before {
-    content: "📋";
-    font-size: 1.5rem;
-}
-
-.icon-chart::before {
-    content: "📊";
-    font-size: 1.5rem;
-}
-
-.icon-user::before {
-    content: "👤";
-    font-size: 1.2rem;
-}
-
-.icon-credit-card::before {
-    content: "💳";
-    font-size: 1.2rem;
-}
-
-.icon-clock::before {
-    content: "🕐";
-    font-size: 1.2rem;
-}
-
-.icon-arrow-left::before {
-    content: "←";
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-
-.icon-sync::before {
-    content: "🔄";
-    font-size: 1.2rem;
-}
-
-.icon-money::before {
-    content: "💰";
-    font-size: 1.2rem;
-}
-
-.icon-plus::before {
-    content: "➕";
-    font-size: 1.2rem;
-}
-
-.icon-minus::before {
-    content: "➖";
-    font-size: 1.2rem;
-}
-
-.icon-receipt::before {
-    content: "🧾";
-    font-size: 1.2rem;
-}
-
-.icon-university::before {
-    content: "🏦";
-    font-size: 1.2rem;
-}
-
-.icon-key::before {
-    content: "🔑";
-    font-size: 1.2rem;
-}
-
-.icon-sign-in::before {
-    content: "🚪";
-    font-size: 1.2rem;
-}
-
-.icon-wallet::before {
-    content: "👛";
-    font-size: 1.2rem;
-}
-
-.icon-arrow-up::before {
-    content: "⬆️";
-    font-size: 1.2rem;
-}
-
-.icon-arrow-down::before {
-    content: "⬇️";
-    font-size: 1.2rem;
-}
-
-.icon-calendar::before {
-    content: "📅";
-    font-size: 1.2rem;
-}
-
-.icon-cog::before {
-    content: "⚙️";
-    font-size: 1.2rem;
-}
-
-.icon-download::before {
-    content: "⬇️";
-    font-size: 1.2rem;
-}
-
-.icon-check::before {
-    content: "✅";
-    font-size: 1.2rem;
-}
-
-.icon-times::before {
-    content: "❌";
-    font-size: 1.2rem;
-}
-
-/* ========================================
-   ESTILOS PARA PAGOS.HTML
-   ======================================== */
-
-/* Contenedor de pagos */
-.payment-container {
-    background: white;
-    border-radius: 15px;
-    box-shadow: var(--vintage-shadow);
-    border: 3px solid var(--secondary-blue);
-    overflow: hidden;
-}
-
-.payment-header {
-    background: var(--primary-blue);
-    color: white;
-    padding: 1.5rem 2rem;
-    text-align: center;
-}
-
-.payment-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin: 0;
-}
-
-.payment-form {
-    padding: 2rem;
-}
-
-/* Resumen del pago */
-.payment-summary {
-    background: var(--light-blue);
-    border: 2px solid var(--secondary-blue);
-    border-radius: 12px;
-    padding: 1.5rem;
-    margin: 2rem 0;
-}
-
-/* ========================================
-   RESPONSIVE DESIGN
-   ======================================== */
-
-/* Responsive para todas las páginas */
+/* Responsive */
 @media (max-width: 768px) {
-    .bank-logo {
-        font-size: 2.5rem;
-    }
-    
-    .welcome-title {
-        font-size: 1.8rem;
-    }
-    
-    .action-buttons {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-        padding: 1rem;
-    }
-    
-    .action-btn {
-        min-height: 120px;
-        padding: 1.5rem;
-    }
-    
-    .footer-links {
-        flex-direction: column;
-        gap: 1rem;
-    }
-    
-    .login-container {
-        margin: 1rem;
-    }
-    
-    .bank-logo {
-        font-size: 2rem;
-    }
-    
-    .login-form {
-        padding: 1.5rem;
-    }
-    
-    .user-info {
-        padding: 1.5rem;
-    }
-    
-    .user-name {
-        font-size: 1.5rem;
-    }
-    
-    .actions-container {
-        margin: 1rem;
-        padding: 1.5rem;
-    }
-    
-    .action-buttons {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    
-    .action-btn {
-        min-height: 100px;
-        padding: 1rem;
-    }
-    
-    .history-container {
-        margin: 1rem;
-    }
-    
-    .filter-group {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    
-    .table-responsive {
-        font-size: 0.9rem;
-    }
-    
-    .transaction-type {
-        font-size: 0.8rem;
-        padding: 0.3rem 0.8rem;
-    }
-    
-    .charts-container {
-        margin: 1rem;
-    }
-    
-    .charts-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    
-    .chart-container {
-        height: 250px;
-    }
-    
-    .control-group {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    
-    .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    .container-fluid { padding-left: 1rem; padding-right: 1rem; }
+    .bank-logo { font-size: 2.5rem; }
+    .welcome-title { font-size: 1.8rem; }
+    .action-buttons { grid-template-columns: 1fr; gap: 1.5rem; padding: 1.5rem; }
+    .action-btn { min-height: 120px; padding: 1.5rem; }
+    .footer-links { flex-direction: column; gap: 1rem; }
+    .filter-group, .control-group { flex-direction: column; align-items: stretch; }
+    .charts-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .balance-details-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .options-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .option-btn { min-height: 90px; padding: 1rem; }
+    .btn-nav { margin: 0.25rem; padding: 0.5rem 1rem; }
+    .form-actions, .balance-actions { flex-direction: column; gap: 1rem; }
+    .balance-content, .deposit-form, .withdraw-form, .payment-form, .login-form { padding: 1.5rem; }
+    .history-controls, .charts-controls { padding: 1.5rem; }
+    .actions-title { font-size: 1.5rem; padding: 1rem 1.5rem; }
+    .exit-section { margin: 1.5rem -1.5rem -1.5rem -1.5rem; padding: 1.5rem; }
+    .btn-exit-full { font-size: 1.1rem; padding: 0.75rem 2rem; min-width: 180px; }
 }
 
 @media (max-width: 576px) {
-    .main-container {
-        margin: 1rem;
-    }
-    
-    .welcome-section {
-        padding: 2rem 1rem;
-    }
-    
-    .action-btn {
-        font-size: 1rem;
-    }
-    
-    .action-btn i {
-        font-size: 2rem;
-    }
-    
-    .action-btn {
-        font-size: 1rem;
-    }
-    
-    .action-btn i {
-        font-size: 1.5rem;
-    }
-    
-    .table thead th,
-    .table tbody td {
-        padding: 0.5rem;
-    }
-    
-    .amount {
-        font-size: 1rem;
-    }
-    
-    .charts-content {
-        padding: 1rem;
-    }
-    
-    .chart-container {
-        height: 200px;
-    }
-    
-    .stats-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .stat-value {
-        font-size: 1.5rem;
-    }
+    .container-fluid { padding-left: 0.75rem; padding-right: 0.75rem; }
+    .main-container { margin: 0.75rem; }
+    .welcome-section { padding: 2rem 1rem; }
+    .action-btn { font-size: 1rem; }
+    .action-btn i { font-size: 2rem; }
+    .table thead th, .table tbody td { padding: 0.5rem; }
+    .amount { font-size: 1rem; }
+    .stats-grid { grid-template-columns: 1fr; gap: 0.75rem; }
+    .stat-value { font-size: 1.5rem; }
+    .balance-content, .deposit-form, .withdraw-form, .payment-form, .login-form { padding: 1rem; }
+    .history-controls, .charts-controls { padding: 1rem; }
+    .option-btn { min-height: 80px; padding: 0.75rem; }
+    .balance-details-grid, .options-grid { gap: 0.75rem; }
+    .actions-title { font-size: 1.3rem; padding: 0.75rem 1rem; }
+    .exit-section { margin: 1rem -1rem -1rem -1rem; padding: 1rem; }
+    .btn-exit-full { font-size: 1rem; padding: 0.75rem 1.5rem; min-width: 160px; }
 }
