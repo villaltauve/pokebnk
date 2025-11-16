@@ -8,9 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
         transactions: []
     };
 
-    const currencyFormatter = new Intl.NumberFormat('es-MX', {
+    const currencyFormatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
-        currency: 'MXN'
+        currency: 'USD'
     });
 
     const loginSection = document.getElementById('login-section');
